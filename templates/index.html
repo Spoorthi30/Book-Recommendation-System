@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        .navbar {
+        background-color: #008000;
+        align-items: center;
+
+        }
+
+        .navbar li {
+        float:left;
+        list-style: none;
+        font-size:20px;
+        }
+
+        .navbar ul {
+            overflow:auto;
+        }
+
+        .navbar li a {
+            padding:50px;
+            text-decoration:none;
+            color:white;
+            border-radius:20px;
+        }
+
+        .navbar li a:hover {
+            background-color: white;
+            color:black;
+        }
+
+                .grow img{
+        transition: 1s ease;
+        }
+
+        .grow img:hover{
+        -webkit-transform: scale(1.0);
+        -ms-transform: scale(1.0);
+        transform: scale(1.2);
+        transition: 1s ease;
+        border-radius:10px;
+        }
+    </style>
+</head>
+<body style="background-color:aquamarine;">
+    <nav class="navbar" >  <!--style="background-color:green"-->
+       <centre><a class="navbar-brand" style="font-size:50px">My Book Recommender</a></centre>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommender</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 style="font-sixe:50px">Top 50 books</h1>
+            </div>
+
+            {% for i in range(book_name|length) %}
+                <div class="col-md-5" style="margin-top:50px">
+                        <div class="card-body">
+                        <div class="grow">
+<!--                            <img class="card-img-top" src="{{image[i]}}">-->
+                            <a href="{{description[i]}}">
+                      <img class="card-img-top" src="{{image[i]}}">
+                    </a>
+
+                            </div>
+                            <h5><b>{{book_name[i]}}</b></h5>
+<!--                            <a href="{{description[i]}}">Wikipedia</a>-->
+                        <h5><b>{{author[i]}}</b></h5>
+                        <h6>votes - {{votes[i]}}</h6>
+                        <h6>Rating - {{rating[i]}}</h6>
+
+                            <table>
+                                  <tr>
+                                    <td><h5><b>Flipkart</b></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td><h5><b>Rating: {{rating1[i]}}/5</b></h5></td>
+                                    <td style="padding-left: 1.2cm;"><h5><b>Price: ₹{{price1[i]}}</b></h5></td>
+                                  </tr>
+                                </table>
+                            <table>
+                                  <tr>
+                                    <td><h5><b>Snapdeal</b></h5></td>
+                                  </tr>
+                                  <tr>
+                                    <td><h5><b>Rating: {{rating2[i]}}/5</b></h5></td>
+                                    <td style="padding-left: 1.2cm;"><h5><b>Price: ₹{{price2[i]}}</b></h5></td>
+                                  </tr>
+                                </table>
+
+                        </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</body>
+</html>

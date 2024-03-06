@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style>
+        .navbar {
+        background-color: #008000;
+        align-items: center;
+
+        }
+
+        .navbar li {
+        float:left;
+        list-style: none;
+        font-size:20px;
+        }
+
+        .navbar ul {
+            overflow:auto;
+            display:flex;
+        }
+
+        .navbar li a {
+            padding:50px;
+            text-decoration:none;
+            color:white;
+            border-radius:20px;
+        }
+
+        .navbar li a:hover {
+            background-color: white;
+            color:black;
+        }
+
+
+    </style>
+</head>
+<body style="background-color:aquamarine;">
+    <nav class="navbar" >
+        <a class="navbar-brand" style="font-size:50px">My Book Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommender</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+                <form action="/recommend_books" method="post">
+                    <input name="user_input" type="text" class="form-control" placeholder="Enter the book title"><br>
+                    <input type="submit" class="btn btn-lg btn-warning">
+                </form>
+            </div>
+
+            {% if data %}
+
+            {% for i in data %}
+
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{i[2]}}">
+                            <h3>{{i[0]}}</h3>
+                            <h5>{{i[1]}}</h5>
+                            <h5>{{i[3]}}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% endif %}
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>
